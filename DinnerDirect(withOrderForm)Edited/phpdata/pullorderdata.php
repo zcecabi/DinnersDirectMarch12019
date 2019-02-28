@@ -13,7 +13,7 @@ echo $userIDpullorderdatainstance;
 
 
 $query = "SELECT * FROM orders ord
-INNER JOIN customers cus /*alias of cus for customer*/
+FULL JOIN customers cus /*alias of cus for customer*/
     on ord.customerID = cus.customerID
 WHERE ord.customerID = '" . $userIDpullorderdatainstance."'";
 

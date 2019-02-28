@@ -21,26 +21,22 @@ WHERE ord.customerID = '" . $userIDpullorderdatainstance."'";
 //search database
 //check if the variable has not been initalized
 $result = mysqli_query($connection, $query);
+$result2 = mysqli_query($connection, $query);
+
 if (empty($result)){
     exit("databasePhp query failed, the result does not exist.");
-
 }
-
-$user = mysqli_fetch_assoc($result);
-if (empty($user)) {
-
-    exit("database Php query failed, result does not exist.");
-
-}
-//testing
-//echo "Successful Search!";
-
-
 
 // Close the connection
-//mysqli_close($connection);
-
+mysqli_close($connection);
 ?>
+
+
+
+
+
+
+
 <html>
 <head>
 
@@ -106,13 +102,16 @@ if (empty($user)) {
 
         </tr>
         <tr>
-            <td><?php echo $user['first_name']. " ".$user['last_name'] ?></td>
+            <td><?php print_r($user);
+            $names=($result2->fetch_assoc()); //instance var to just get the first and last name
+                    echo $names['first_name']. " ".$names['last_name'] ?></td>
 
         </tr>
-        <?php  while( $user=mysqli_fetch_array($result)){?>
+
         <tr>
             <th>Order Item ID</th>
         </tr>
+        <?php  while( $user=mysqli_fetch_assoc($result)){ ?>
         <tr>
             <td><?php
                 print_r($user['orderitemID']) ?>
@@ -132,7 +131,7 @@ if (empty($user)) {
             <td><?php echo $user['amountPaid'] ?></td>
         </tr>
 
-<?php }?>
+<? }?>
     </table>
     <div class="row">
 

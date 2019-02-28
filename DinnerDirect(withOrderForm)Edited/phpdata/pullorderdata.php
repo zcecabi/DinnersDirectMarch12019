@@ -12,7 +12,13 @@ $userIDpullorderdatainstance=$_SESSION['userID'];//$y is any declared variable
 echo $userIDpullorderdatainstance;
 
 
-$query = "SELECT * FROM orders WHERE customerID = '" . $userIDpullorderdatainstance."'";
+$query = "SELECT * FROM orders 
+FROM orders ord
+INNER JOIN customer cus /*alias of cus for customer*/
+    on ord.customer_id = cus.customer_id
+WHERE customerID = '" . $userIDpullorderdatainstance."'
+";
+
 
 //search database
 //check if the variable has not been initalized

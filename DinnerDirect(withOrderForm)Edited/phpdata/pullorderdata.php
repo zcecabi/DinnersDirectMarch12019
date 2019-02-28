@@ -12,8 +12,7 @@ $userIDpullorderdatainstance=$_SESSION['userID'];//$y is any declared variable
 echo $userIDpullorderdatainstance;
 
 
-$query = "SELECT * FROM orders 
-FROM orders ord
+$query = "SELECT * FROM orders ord
 INNER JOIN customers cus /*alias of cus for customer*/
     on ord.customerID = cus.customerID
 WHERE customerID = '" . $userIDpullorderdatainstance."'";

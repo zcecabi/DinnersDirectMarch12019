@@ -12,8 +12,8 @@ $userIDpullorderdatainstance=$_SESSION['userID'];//$y is any declared variable
 echo $userIDpullorderdatainstance;
 
 
-$query = "SELECT * FROM orders ord
-FULL OUTER JOIN customers cus /*alias of cus for customer*/
+$query = "SELECT cus.first_name, cus.last_name, ord.orderID, ord.DateOrdered, ord.amountPaid FROM orders ord
+JOIN customers cus /*alias of cus for customer*/
     on ord.customerID = cus.customerID
 WHERE ord.customerID = '" . $userIDpullorderdatainstance."'";
 

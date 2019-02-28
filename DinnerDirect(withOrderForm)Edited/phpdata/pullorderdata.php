@@ -12,7 +12,7 @@ $userIDpullorderdatainstance=$_SESSION['userID'];//$y is any declared variable
 echo $userIDpullorderdatainstance;
 
 
-$query = "SELECT cus.first_name, cus.last_name, ord.orderID, ord.DateOrdered, ord.amountPaid FROM orders ord
+$query = "SELECT cus.first_name, cus.last_name, ord.orderitemID, ord.DateOrdered, ord.amountPaid FROM orders ord
 JOIN customers cus /*alias of cus for customer*/
     on ord.customerID = cus.customerID
 WHERE ord.customerID = '" . $userIDpullorderdatainstance."'";
@@ -33,10 +33,9 @@ if (empty($user)) {
 
 }
 //testing
-echo "Successful Search!";
+//echo "Successful Search!";
 
-// Free the results from memory
-mysqli_free_result($result);
+
 
 // Close the connection
 //mysqli_close($connection);
@@ -100,21 +99,24 @@ mysqli_free_result($result);
 <!-- Page Content -->
 <div class="container">
     <h1> Past Orders</h1>
+
     <table class="table" >
         <tr>
             <th>Name</th>
 
         </tr>
         <tr>
-            <td><?php echo $user['first_name'].$user['last_name'] ?></td>
+            <td><?php echo $user['first_name']. " ".$user['last_name'] ?></td>
 
         </tr>
-
+        <?php  while( $user=mysqli_fetch_array($result)){?>
         <tr>
             <th>Order Item ID</th>
         </tr>
         <tr>
-            <td><?php echo $user['orderitemID'] ?></td>
+            <td><?php
+                print_r($user['orderitemID']) ?>
+            </td>
         </tr>
 
         <tr>
@@ -130,9 +132,7 @@ mysqli_free_result($result);
             <td><?php echo $user['amountPaid'] ?></td>
         </tr>
 
-
-
-
+<?php }?>
     </table>
     <div class="row">
 
@@ -142,7 +142,9 @@ mysqli_free_result($result);
 
 
 <!-- /.container -->
-
+<?php
+// Free the results from memory
+//mysqli_free_result($result);?>
 
 <!-- Bootstrap core JavaScript -->
 <script src="../vendor/jquery/jquery.min.js"></script>
@@ -150,14 +152,5 @@ mysqli_free_result($result);
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
 
 

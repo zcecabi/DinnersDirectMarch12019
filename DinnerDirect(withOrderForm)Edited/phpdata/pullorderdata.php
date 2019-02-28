@@ -106,7 +106,7 @@ mysqli_free_result($result);
 
         </tr>
         <tr>
-            <td><?php echo $user['first_name'] +$user['last_name'] ?></td>
+            <td><?php echo $user['first_name'].$user['last_name'] ?></td>
 
         </tr>
 

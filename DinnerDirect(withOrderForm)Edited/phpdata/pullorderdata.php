@@ -16,8 +16,7 @@ $query = "SELECT * FROM orders
 FROM orders ord
 INNER JOIN customer cus /*alias of cus for customer*/
     on ord.customer_id = cus.customer_id
-WHERE customerID = '" . $userIDpullorderdatainstance."'
-";
+WHERE customerID = '" . $userIDpullorderdatainstance."'";
 
 
 //search database

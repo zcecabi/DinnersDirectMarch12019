@@ -102,11 +102,12 @@ mysqli_free_result($result);
     <h1> Past Orders</h1>
     <table class="table" >
         <tr>
-            <th>Customer ID</th>
+            <th>Name</th>
 
         </tr>
         <tr>
-            <td><?php echo $user['customerID'] ?></td>
+            <td><?php echo $user['first_name'] +$user['last_name'] ?></td>
+
         </tr>
 
         <tr>

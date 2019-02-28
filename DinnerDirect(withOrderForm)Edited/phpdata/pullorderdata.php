@@ -99,7 +99,6 @@ mysqli_close($connection);
     <table class="table" >
         <tr>
             <th>Name</th>
-
         </tr>
         <tr>
             <td><?php print_r($user);
@@ -108,26 +107,16 @@ mysqli_close($connection);
 
         </tr>
 
+
         <tr>
-            <th>Order Item ID</th>
+            <th>Order item ID</th>
+            <th>Date ordered</th>
+            <th>Amount paid</th>
         </tr>
         <?php  while( $user=mysqli_fetch_assoc($result)){ ?>
         <tr>
-            <td><?php
-                print_r($user['orderitemID']) ?>
-            </td>
-        </tr>
-
-        <tr>
-            <th>Date Ordered</th>
-        </tr>
-        <tr>
+            <td><?php print_r($user['orderitemID']) ?> </td>
             <td><?php echo $user['DateOrdered'] ?></td>
-        </tr>
-        <tr>
-            <th>Amount Paid</th>
-        </tr>
-        <tr>
             <td><?php echo $user['amountPaid'] ?></td>
         </tr>
 
